@@ -26,27 +26,9 @@ cd $BASE_DIR
 sudo rm -rf ros2_cc_ws
 mkdir -p ros2_cc_ws/src
 cd ros2_cc_ws
-wget https://raw.githubusercontent.com/ros2/ros2/"$ROS2_DISTRO"/ros2.repos
-vcs import src < ros2.repos
+wget https://raw.githubusercontent.com/micro-ROS/micro-ROS-doc/dashing/Installation/repos/agent_minimum.repos
+vcs import src < agent_minimum.repos
 
-# Get HEAD of branch
-HEAD=$(git ls-remote git://github.com/ros2/ros2 "$ROS2_DISTRO" | cut -c1-7)
-
-# Create install directory for the cross-compilation results
-RESULTS_DIR=$BASE_DIR/install/"$ROS2_DISTRO"_"$HEAD"_"$TARGET"
-echo "Create RESULTS_DIR=$RESULTS_DIR"
-mkdir -p $RESULTS_DIR
-
-# Save the current packages versions and check if any changes
-ROS2_SRCS_HEADS=$RESULTS_DIR/ros2.repos.by_commit
-ROS2_SRCS_HEADS_PREV_RUN=$BASE_DIR/ros2_srcs_prev_run_"$TARGET"_"$ROS2_DISTRO".txt
-
-vcs export --exact src > $ROS2_SRCS_HEADS
-
-if [ -f $ROS2_SRCS_HEADS_PREV_RUN ]; then
-  diff -y  $ROS2_SRCS_HEADS $ROS2_SRCS_HEADS_PREV_RUN > $RESULTS_DIR/diff_ros2_versions.txt
-fi
-cp -R $ROS2_SRCS_HEADS $ROS2_SRCS_HEADS_PREV_RUN
 
 
 # Cross-compiling ROS2

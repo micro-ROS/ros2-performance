@@ -10,7 +10,7 @@ if [ -z "$1" ]; then
 else
     TOOLCHAIN_PATH=$1
 fi
-
+git clone https://github.com/eProsima/Micro-CDR
 # clear out everything first
 rm -rf build install log
 
