@@ -36,11 +36,9 @@ cd $BASE_DIR
 IGNORE_SCRIPT=cross-compiling/ignore_pkgs.sh
 bash $IGNORE_SCRIPT $BASE_DIR/ros2_cc_ws $ROS2_DISTRO
 
-# Run the cross-compilation and check the return code
 CC_CMD="bash cross-compiling/cc_workspace.sh $BASE_DIR/ros2_cc_ws"
 if $CC_CMD; then
-  # If the build was succesful, copy results to store as artifact
-  cp -r $BASE_DIR/ros2_cc_ws/install $RESULTS_DIR
+  echo "Cross-compilation finished"
 else
   exit 1
 fi
