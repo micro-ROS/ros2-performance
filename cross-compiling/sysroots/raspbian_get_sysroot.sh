@@ -6,14 +6,14 @@ THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 docker build -t raspbian_sysroot -f $THIS_DIR/Dockerfile_raspbian $THIS_DIR
 
 # eventually remove old docker containers
-docker kill ros2-raspbian-sysroot
-docker rm ros2-raspbian-sysroot
+docker kill micro-ros-raspbian-sysroot
+docker rm micro-ros-raspbian-sysroot
 
 # create new docker container
-docker create --name ros2-raspbian-sysroot raspbian_sysroot
+docker create --name micro-ros-raspbian-sysroot raspbian_sysroot
 
 # extract sysroot from docker container as tar file
-docker container export -o $THIS_DIR/$TARGET_ARCHITECTURE.tar ros2-raspbian-sysroot
+docker container export -o $THIS_DIR/$TARGET_ARCHITECTURE.tar micro-ros-raspbian-sysroot
 
 # uncompress sysroot
 chmod 777 $THIS_DIR/$TARGET_ARCHITECTURE.tar

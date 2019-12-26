@@ -23,9 +23,9 @@ bash $THIS_DIR/get_sysroot.sh
 
 # Remove ROS2 old cross-compilation workspace and get a new one
 cd $BASE_DIR
-sudo rm -rf ros2_cc_ws
-mkdir -p ros2_cc_ws/src
-cd ros2_cc_ws
+sudo rm -rf micro-ros_cc_ws
+mkdir -p $BASE_DIR/micro-ros_cc_ws/src
+cd $BASE_DIR/micro-ros_cc_ws
 wget https://raw.githubusercontent.com/micro-ROS/micro-ROS-doc/dashing/Installation/repos/agent_minimum.repos
 vcs import src < agent_minimum.repos
 
@@ -34,9 +34,9 @@ vcs import src < agent_minimum.repos
 # Cross-compiling ROS2
 cd $BASE_DIR
 IGNORE_SCRIPT=cross-compiling/ignore_pkgs.sh
-bash $IGNORE_SCRIPT $BASE_DIR/ros2_cc_ws $ROS2_DISTRO
+bash $IGNORE_SCRIPT $BASE_DIR/micro-ros_cc_ws $ROS2_DISTRO
 
-CC_CMD="bash cross-compiling/cc_workspace.sh $BASE_DIR/ros2_cc_ws"
+CC_CMD="bash cross-compiling/cc_workspace.sh $BASE_DIR/micro-ros_cc_ws"
 if $CC_CMD; then
   echo "Cross-compilation finished"
 else

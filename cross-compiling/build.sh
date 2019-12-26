@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # build the cross compilation base docker image
-docker build -t ros2_cc_base -f docker_environments/Dockerfile_base .
+docker build -t micro-ros_cc_base -f docker_environments/Dockerfile_base .
 
 prefix="docker_environments/Dockerfile_"
 
@@ -18,7 +18,7 @@ do
 
   # Skip Dockerfile_base as this must be built first outside this loop
   if [ $platform_name != "base" ]; then
-    docker build -t ros2_cc_$platform_name -f $dockerfile_name .
+    docker build -t micro-ros_cc_$platform_name -f $dockerfile_name .
   fi
 done
 
