@@ -33,9 +33,6 @@ vcs import src < agent_minimum.repos
 
 # Cross-compiling ROS2
 cd $BASE_DIR
-IGNORE_SCRIPT=cross-compiling/ignore_pkgs.sh
-bash $IGNORE_SCRIPT $BASE_DIR/micro-ros_cc_ws $ROS2_DISTRO
-
 CC_CMD="bash cross-compiling/cc_workspace.sh $BASE_DIR/micro-ros_cc_ws"
 if $CC_CMD; then
   echo "Cross-compilation finished"
