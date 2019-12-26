@@ -1,8 +1,3 @@
-# This script is intended to be used by the Jenkins night builds.
-# But it still possible to use manually setting up this variables:
-#
-# TARGET=[raspbian]
-# ROS2_DISTRO=[ardent,bouncy,crystal,master,...]
 
 # Check that all variables are defined before start
 if [[ -z "$TARGET" || -z "$ROS2_DISTRO" ]]
@@ -21,7 +16,7 @@ source $THIS_DIR/env.sh $TARGET
 # Get sysroot
 bash $THIS_DIR/get_sysroot.sh
 
-# Remove ROS2 old cross-compilation workspace and get a new one
+# Remove micro-ROS Agent old cross-compilation workspace and get a new one
 cd $BASE_DIR
 sudo rm -rf micro-ros_cc_ws
 mkdir -p $BASE_DIR/micro-ros_cc_ws/src
@@ -31,7 +26,7 @@ vcs import src < agent_minimum.repos
 
 
 
-# Cross-compiling ROS2
+# Cross-compiling micro-ROS Agent
 cd $BASE_DIR
 CC_CMD="bash cross-compiling/cc_workspace.sh $BASE_DIR/micro-ros_cc_ws"
 if $CC_CMD; then
