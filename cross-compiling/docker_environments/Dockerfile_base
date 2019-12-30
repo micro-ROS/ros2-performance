@@ -73,3 +73,6 @@ export AMENT_PREFIX_PATH="/root/sysroot/usr;/root/sysroot/usr/bin"' >> $HOME/.ba
 
 # copy the compilation scripts into the docker image
 COPY compilation_scripts $HOME/compilation_scripts
+
+# Add a new user to avoid the root ussage on the output files
+RUN useradd -ms /bin/bash user

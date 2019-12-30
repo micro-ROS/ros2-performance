@@ -25,6 +25,8 @@ colcon \
     -DTHIRDPARTY=ON \
     -DBUILD_TESTING:BOOL=OFF
 
+chown -R user ~/ws
+
 
 # --merge-install is used to avoid creation of nested install dirs for each package
 # --executtor sequential is used because parallel build fails in random ways
