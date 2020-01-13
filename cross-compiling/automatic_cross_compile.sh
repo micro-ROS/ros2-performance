@@ -21,7 +21,7 @@ cd $BASE_DIR
 rm -rf micro-ros_cc_ws
 mkdir -p $BASE_DIR/micro-ros_cc_ws/src
 cd $BASE_DIR/micro-ros_cc_ws
-wget https://raw.githubusercontent.com/micro-ROS/micro-ROS-doc/dashing/Installation/repos/agent_minimum.repos
+wget https://raw.githubusercontent.com/micro-ROS/micro-ROS-doc/feature/6lowpan/Installation/repos/agent_minimum.repos
 vcs import src < agent_minimum.repos
 
 
