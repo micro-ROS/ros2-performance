@@ -21,6 +21,7 @@ colcon \
     --executor sequential \
     --cmake-args \
     -DCMAKE_TOOLCHAIN_FILE=$TOOLCHAIN_PATH \
+    -DUAGENT_ISOLATED_INSTALL=OFF \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
     -DTHIRDPARTY=ON \
     -DBUILD_TESTING:BOOL=OFF
