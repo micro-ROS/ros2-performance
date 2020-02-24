@@ -21,9 +21,12 @@ cd $BASE_DIR
 rm -rf micro-ros_cc_ws
 mkdir -p $BASE_DIR/micro-ros_cc_ws/src
 cd $BASE_DIR/micro-ros_cc_ws
-wget https://raw.githubusercontent.com/micro-ROS/micro-ROS-doc/dashing/Installation/repos/agent_minimum.repos
-vcs import src < agent_minimum.repos
 
+# Select the micro-ROS distro that we want to Cross-Compile
+wget -q https://raw.githubusercontent.com/micro-ROS/micro-ROS-doc/$ROS2_DISTRO/Installation/repos/agent_minimum.repos
+
+# Download the repos
+vcs import src < agent_minimum.repos
 
 
 # Cross-compiling micro-ROS Agent
